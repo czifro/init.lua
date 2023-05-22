@@ -7,19 +7,39 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  use 'terrortylor/nvim-comment'
+
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-
+  
   use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
+      'kartikp10/noctis.nvim',
+      as = 'noctis',
+      requires = { 'rktjmp/lush.nvim' },
+      config = function()
+          vim.cmd('colorscheme noctis')
+      end
   })
+
+  -- use({
+  --     'AlexvZyl/nordic.nvim',
+  --     lazy = false,
+  --     priority = 1000,
+  --     config = function()
+  --         require 'nordic' .load()
+  --     end
+  -- })
+
+  -- use({
+  -- 	  'rose-pine/neovim',
+  -- 	  as = 'rose-pine',
+  -- 	  config = function()
+  -- 		  vim.cmd('colorscheme rose-pine')
+  -- 	  end
+  -- })
 
   use({
       "folke/trouble.nvim",

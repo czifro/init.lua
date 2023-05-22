@@ -1,4 +1,3 @@
-print("Hello from set.lua")
 
 vim.g.mapleader = " "
 vim.g.guicursor = ""
