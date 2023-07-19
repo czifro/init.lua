@@ -22,4 +22,3 @@ autocmd("filetype", {
         bind("l", "<CR>")
     end
 })
-

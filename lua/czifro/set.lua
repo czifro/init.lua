@@ -1,3 +1,4 @@
+print("Setting vim config")
 
 vim.g.mapleader = " "
 vim.g.guicursor = ""
