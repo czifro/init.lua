@@ -130,13 +130,26 @@ require('lazy').setup({
     },
   },
 
+  -- {
+  --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    'folke/tokyonight.nvim',
+    lazy = false,
     priority = 1000,
+    opts = {},
     config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
+      vim.cmd.colorscheme 'tokyonight'
+    end
+  },
+  {
+    'xiyaowong/transparent.nvim',
+    opts = {}
   },
 
   {
@@ -146,7 +159,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'tokyonight',
         component_separators = '|',
         section_separators = '',
       },
@@ -160,7 +173,10 @@ require('lazy').setup({
     -- See `:help indent_blankline.txt`
     opts = function(_, opts)
       -- Other blankline configuration here
-      return require("indent-rainbowline").make_opts(opts)
+      return require("indent-rainbowline").make_opts(opts, {
+        color_transparency = 0.15,
+        colors = { 0xff0000, 0x00ff00, 0x0000ff, },
+      })
     end,
     dependencies = {
       "TheGLander/indent-rainbowline.nvim",
@@ -221,6 +237,9 @@ vim.opt.incsearch = true
 -- Make line numbers default
 vim.wo.number = true
 vim.o.relativenumber = true
+
+-- Add column rulers
+vim.o.colorcolumn = "65,80"
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -298,6 +317,22 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- [[ Configure Theme ]]
+vim.cmd[[colorscheme tokyonight]]
+
+-- [[ Transparent background ]]
+require('transparent').setup({
+  groups = { -- table: default groups
+    'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+    'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+    'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+    'SignColumn', 'CursorLineNr', 'EndOfBuffer',
+  },
+  extra_groups = { "NormalFloat" },
+  exclude_groups = {},
+})
+vim.g.transparent_enabled = true
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -456,6 +491,11 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+
+  -- Temporary hack to force rust buffers to use this tabstop setting
+  vim.o.tabstop = 2
+  vim.o.softtabstop = 2
+  vim.o.shiftwidth = 2
 end
 
 -- Enable the following language servers
@@ -552,3 +592,28 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- [[ Colorize Indents ]]
+-- vim.opt.termguicolors = true
+-- vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
+--
+-- vim.opt.list = true
+-- vim.opt.listchars:append "space:⋅"
+-- vim.opt.listchars:append "eol:↴"
+--
+-- require("indent_blankline").setup {
+--     space_char_blankline = " ",
+--     char_highlight_list = {
+--         "IndentBlanklineIndent1",
+--         "IndentBlanklineIndent2",
+--         "IndentBlanklineIndent3",
+--         "IndentBlanklineIndent4",
+--         "IndentBlanklineIndent5",
+--         "IndentBlanklineIndent6",
+--     },
+-- }
