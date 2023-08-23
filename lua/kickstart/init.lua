@@ -143,9 +143,9 @@ require('lazy').setup({
     lazy = false,
     priority = 1000,
     opts = {},
-    config = function()
-      vim.cmd.colorscheme = 'tokyonight'
-    end
+    -- config = function()
+    --   vim.cmd.colorscheme 'tokyonight'
+    -- end
   },
   {
     'xiyaowong/transparent.nvim',
@@ -159,7 +159,8 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'tokyonight',
+        theme = 'night',
+        -- theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },
@@ -171,16 +172,18 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = function(_, opts)
-      -- Other blankline configuration here
-      return require("indent-rainbowline").make_opts(opts, {
-        color_transparency = 0.15,
-        colors = { 0xff0000, 0x00ff00, 0x0000ff, },
-      })
-    end,
-    dependencies = {
-      "TheGLander/indent-rainbowline.nvim",
-    },
+    -- opts = function(_, opts)
+    --   -- print(vim.api.nvim_get_hl(0, { name = "IndentBlanklineChar", link = false }))
+    --   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    --   -- Other blankline configuration here
+    --   return require("indent-rainbowline").make_opts(opts, {
+    --     color_transparency = 0.00,
+    --     -- colors = { 0xff0000, 0x00ff00, 0x0000ff, },
+    --   })
+    -- end,
+    -- dependencies = {
+    --   "TheGLander/indent-rainbowline.nvim",
+    -- },
   },
 
   -- "gc" to comment visual regions/lines
@@ -225,6 +228,7 @@ require('lazy').setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
 }, {})
+
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -319,7 +323,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- [[ Configure Theme ]]
-vim.cmd[[colorscheme tokyonight]]
+-- vim.cmd[[colorscheme tokyonight]]
 
 -- [[ Transparent background ]]
 require('transparent').setup({
@@ -376,6 +380,10 @@ require('nvim-treesitter.configs').setup {
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
+  sync_install = false,
+  ignore_install = {},
+
+  modules = {},
 
   highlight = { enable = true },
   indent = { enable = true },
