@@ -1,6 +1,13 @@
 require('tokyonight').setup({
     transparent = true
 })
+require('kanagawa').setup({
+    transparent = true
+})
+require('onedark').setup({
+    transparent = true,
+    style = 'dark',
+})
 
 function SetMyColorScheme(color)
     color = color or "tokyonight"
@@ -10,4 +17,4 @@ function SetMyColorScheme(color)
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
-SetMyColorScheme()
+SetMyColorScheme('spacegray')
