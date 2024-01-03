@@ -6,6 +6,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<C-Q>", "<cmd>q<CR>")
+vim.keymap.set("n", "<C-X>", "<cmd>q!<CR>")
 vim.keymap.set("n", "<C-S>", "<cmd>w<CR>")
 vim.keymap.set("n", "Q", "<nop>")
 
