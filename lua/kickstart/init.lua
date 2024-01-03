@@ -129,6 +129,10 @@ require('lazy').setup({
       end,
     },
   },
+  {
+    'ruifm/gitlinker.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
 
   {
     -- Theme inspired by Atom
@@ -615,6 +619,8 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+require('gitlinker').setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

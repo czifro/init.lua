@@ -1,2 +1,2 @@
--- require("czifro")
-require("kickstart")
+require("czifro")
+-- require("kickstart")
