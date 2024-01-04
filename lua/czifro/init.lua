@@ -4,7 +4,7 @@
 --   -- ordinary Neovim
 -- end
 
-require("czifro.lazy")
 require("czifro.set")
+require("czifro.lazy")
 require("czifro.remap")
 

@@ -125,6 +125,15 @@ require('lazy').setup({
     },
   },
 
+  'nvim-lua/plenary.nvim',
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+  },
+
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -171,6 +180,8 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+
+  'github/copilot.vim',
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.

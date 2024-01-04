@@ -18,8 +18,6 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- navigation helpers
-vim.keymap.set("n", "<leader>h", "^")
-vim.keymap.set("n", "<leader>l", "$")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
