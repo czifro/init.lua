@@ -5,6 +5,13 @@ vim.g.guicursor = ''
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+vim.o.colorcolumn = "65,80"
+
+vim.o.mouse = 'a'
+
+vim.o.clipboard = 'unnamedplus'
+
+vim.o.breakindent = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
@@ -33,3 +40,5 @@ vim.opt.isfname:append('@-@')
 vim.opt.updatetime = 50
 vim.opt.timeout = true
 vim.opt.timeoutlen = 2000
+
+vim.g.color = 'spacegray'
