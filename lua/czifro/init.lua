@@ -32,7 +32,28 @@ autocmd("filetype", {
   end
 })
 
-vim.g.rust_recommend_style = 0
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
+-- [[ Rust styling ]]
+local rust_indent_group = vim.api.nvim_create_augroup('RustIndent', { clear = true })
+vim.api.nvim_create_autocmd('BufEnter', {
+  callback = function()
+    vim.opt.tabstop = 4
+    vim.opt.softtabstop = 4
+    vim.opt.shiftwidth = 4
+  end,
+  group = rust_indent_group,
+  pattern = '*.rs',
+})
 
 vim.cmd([[
   augroup MarkdownSpell
