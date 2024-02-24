@@ -5,10 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
 
-  outputs = { self, nixpkgs } @ inputs: {
+  outputs = { ... } @ inputs: {
 
     modules = {
-      nvim = import ./modules/home-manager.nix;
+      nvim = import ./modules/home-manager;
     };
 
   };
