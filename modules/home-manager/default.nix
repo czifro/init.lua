@@ -8,7 +8,7 @@
   home = {
     packages = [
       pkgs.neovim
-    ];
+    ] ++ configs.home.packages;
 
     # This is an option, but I prefer splitting it out into neighboring nix files
     # file = {
