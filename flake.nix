@@ -5,7 +5,15 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
 
-  outputs = { pkgs, ... } @ inputs: {
+  outputs = { nixpkgs, ... } @ inputs:
+
+  let
+
+  pkgs = import nixpkgs { system = "aarch64-darwin"; };
+
+  in
+
+  {
 
     modules = {
       nvim = import ./modules/home-manager;
