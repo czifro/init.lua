@@ -6,6 +6,11 @@
   ];
 
   home = {
+
+    packages = [
+      pkgs.neovim
+    ];
+
     # This is an option, but I prefer splitting it out into neighboring nix files
     # file = {
     #   # tmux
