@@ -14,16 +14,18 @@
 
   let
 
+  modules = {
+    home-manager = {
+      nvim = import ./modules/home-manager;
+    };
+  };
+
   pkgs = import nixpkgs { system = "aarch64-darwin"; };
 
   in
 
   {
-    modules = {
-      home-manager = {
-        nvim = import ./modules/home-manager;
-      };
-    };
+    modules = modules;
 
     homeConfigurations = {
       czifro = home-manager.lib.homeManagerConfiguration {
